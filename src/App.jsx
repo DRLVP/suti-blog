@@ -2,6 +2,7 @@
 
 function App() {
 
+  console.log(import.meta.env.VITE_APPWRITE_URL)
 
   return (
     <div className="w-screen h-screen bg-blue-950">
