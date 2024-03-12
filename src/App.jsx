@@ -1,13 +1,37 @@
-
+import { useEffect, useState } from "react"
+import {Header, Footer} from "./components/index"
+import { useDispatch } from "react-redux";
+import authService from "./appwrite/auth";
+import {login, logout} from "./store/authSlice"
 function App() {
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch()
 
-  return (
-    <div className="w-screen h-screen bg-blue-950">
-      <h1 className="text-center text-4xl text-white">SUTI BLOG</h1>
+  useEffect(()=>{
+    // check user looged in or not
+    authService.getCurrentUser()
+        .then((userData)=> {
+          if (userData) {
+            dispatch(login({userData}))
+          }else{
+            dispatch(logout())
+          }
+        })       
+        .finally(()=> setLoading(false))
+  },[])
 
-      
+  return !loading?
+  <div>
+    <div>
+      <Header/>
+        <main>
+          {/* <Outlet/> */}
+        </main>
+      <Footer/>
     </div>
-  )
+  </div> : <h1>Loading...</h1>;
+    
+  
 }
 
 export default App
