@@ -21,7 +21,7 @@ function App() {
   },[])
 
   return !loading?
-  <div>
+  <div className="w-screen h-screen bg-blue-950 text-white">
     <div>
       <Header/>
         <main>
