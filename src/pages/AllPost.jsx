@@ -19,7 +19,9 @@ const AllPost = () => {
         <Container>
             {
                 posts.map((post)=>(
-                    <PostCard key={post.$id} post={post} />
+                    <div key={post.$id}>
+                        <PostCard  post={post} />
+                    </div>
                 ))
             }
         </Container>

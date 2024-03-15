@@ -3,6 +3,7 @@ import {Header, Footer} from "./components/index"
 import { useDispatch } from "react-redux";
 import authService from "./appwrite/auth";
 import {login, logout} from "./store/authSlice"
+import { Outlet } from "react-router-dom";
 function App() {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch()
@@ -21,11 +22,11 @@ function App() {
   },[])
 
   return !loading?
-  <div className="w-screen h-screen bg-blue-950 text-white">
+  <div className="w-full text-white">
     <div>
       <Header/>
-        <main>
-          {/* <Outlet/> */}
+        <main className=" bg-blue-950 h-screen">
+          <Outlet/>
         </main>
       <Footer/>
     </div>

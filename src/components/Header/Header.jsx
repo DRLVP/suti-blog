@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux'
 
 const Header = () => {
   const authStatus = useSelector((state) => state.status);
-  console.log("THis is our store status",authStatus);
   const navigate = useNavigate()
 
   const navItems = [
@@ -38,21 +37,23 @@ const Header = () => {
     }
   ]
   return (
-    <header>
+    <header className="w-full h-20 shadow-xl bg-slate-950">
       <Container>
-        <nav>
+        <nav className="w-full h-full flex justify-between px-8 items-center">
           <div>
             <Link to="/">
               <Logo/>
             </Link>
           </div>
-          <ul>
+          <ul className="flex gap-4">
             {
               navItems.map(item => 
                 item.active?
-                  <li key={item.name}>
-                    <button onClick={()=> navigate(item.url)}>{item.name}</button>
-                  </li>
+                  <div key={item.name}>
+                    <li className="text-2xl">
+                      <button onClick={()=> navigate(item.url)}>{item.name}</button>
+                    </li>
+                  </div>
                 :null)
             }
             {

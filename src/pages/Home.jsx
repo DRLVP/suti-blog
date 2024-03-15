@@ -16,9 +16,9 @@ const Home = () => {
     },[])
 
     if (posts.length === 0 ) {
-        return <div className='w-full'>
+        return <div className='w-full h-full'>
             <Container>
-                <h2>Login to read posts</h2>
+                <h2 className="text-center text-2xl">Login to read posts</h2>
             </Container>
         </div>
     }
