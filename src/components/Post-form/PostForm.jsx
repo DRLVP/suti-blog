@@ -2,11 +2,11 @@ import React, {useCallback, useEffect} from 'react'
 import {Input, Button, Select, RTE} from "../index"
 import {useForm} from "react-hook-form"
 import service from '../../appwrite/config'
-import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 function PostForm({post}) {
+  
   const {register, handleSubmit, watch, setValue, control, getValues} = useForm({
     defaultValues:{
       title: post?.title || "",
@@ -17,11 +17,13 @@ function PostForm({post}) {
   })
   
   const navigate = useNavigate()
-  const userData = useSelector(state => state.user.userData)
+  const userData = useSelector(state => state.auth.userData.userData)
+  console.log("this postFrom userData::", userData);
 
+  
   const submit = async(data)=>{
     if (post) {
-      const file = data.image[0]?service.uploadFile(data.image[0]):null;
+      const file = data.image[0]?await service.uploadFile(data.image[0]):null;
 
       if (file) {
         service.deleteFile(post.featuredImage)
@@ -36,16 +38,14 @@ function PostForm({post}) {
         navigate(`post/${dbPost.$id}`)
       }
     } else{
-      const file = data.image[0]? await service.uploadFile(data.image[0]):null;
+      const file = await service.uploadFile(data.image[0]);
 
       if (file) {
         const fileId = file.$id
         data.featuredImage = fileId;
 
-        const dbPost = await service.createPost({
-          ...data,
-          userId: userData.$id
-        })
+        const dbPost = await service.createPost({...data, userId: userData.$id})
+        console.log("this is your db post::", dbPost);
         if (dbPost) {
           navigate(`post/${dbPost.$id}`)
         }
@@ -58,28 +58,27 @@ function PostForm({post}) {
       return value
       .trim()
       .toLowerCase()
-      .replace(/^[a-zA-Z\d\s]+/g, "-")
+      .replace(/[^a-zA-Z\d\s]+/g, "-")
       .replace(/\s/g, "-")
     }
     return "";
   },[])
 
   useEffect(()=>{
-    const subscription = watch((value, name)=>{
+    const subscription = watch((value, {name})=>{
       if (name === "title" ) {
-        setValue("slug", slugTransform(value.title, 
-          { shouldValidate:true}))
+        setValue("slug", slugTransform(value.title), 
+          { shouldValidate:true})
       }
     });
 
-    return () => {
-      subscription.unsubscribe()
-    }
+    return () => subscription.unsubscribe();
+    
   }, [watch, slugTransform, setValue])
   
   return (
     <div>
-      <form onSubmit={submit}>
+      <form onSubmit={handleSubmit(submit)}>
         <div className="w-2/3">
           <Input
           label = "title"

@@ -29,18 +29,21 @@ const Signup = () => {
     }
   }
   return (
-    <div>
-      <div>
-        <Logo/>
-        <h2>Sign up</h2>
+    
+    <div className="flex items-center shadow-xl gap-2">
+      <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10 text-black font-semibold`}>
+        <div className="mb-2 flex justify-center">
+          <Logo/>
+        </div>
+        
         <p>
-          alreay have an account
-          <Link to="/signin">
+          alreay have an account?
+          <Link to="/signin" className="ml-2 text-blue-600 underline">
             sign in
           </Link>
         </p>
         {
-          error && <p>{error}</p>
+          error && <p className="text-red-600">{error}</p>
         }
 
         <form onSubmit={handleSubmit(signup)}>
@@ -82,6 +85,13 @@ const Signup = () => {
         </form>
       </div>
     </div>
+
+    
+
+
+
+    
+  
   )
 }
 

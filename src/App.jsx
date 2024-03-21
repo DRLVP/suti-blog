@@ -4,10 +4,10 @@ import { useDispatch } from "react-redux";
 import authService from "./appwrite/auth";
 import {login, logout} from "./store/authSlice"
 import { Outlet } from "react-router-dom";
+import conf from "./conf/conf";
 function App() {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch()
-
   useEffect(()=>{
     // check user looged in or not
     authService.getCurrentUser()
@@ -19,6 +19,7 @@ function App() {
           }
         })       
         .finally(()=> setLoading(false))
+       
   },[])
 
   return !loading?

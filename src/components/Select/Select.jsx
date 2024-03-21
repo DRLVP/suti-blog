@@ -17,7 +17,7 @@ const Select = ({
         {...props}>
             {
                 options?.map((item) => (
-                    <option value={item} key={item}>
+                    <option value={item} key={item} className='text-black'>
                         {item}
                     </option>
                 ))

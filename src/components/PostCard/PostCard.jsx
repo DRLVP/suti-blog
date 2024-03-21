@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const PostCard = ({$id, title, featuredImage}) => {
   return (
-    <div>
+    <div className="w-fit px-2 py-1">
         <Link to={`/posts/${$id}`}>
             <div>
                 <div>
