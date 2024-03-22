@@ -1,20 +1,23 @@
-import React from 'react'
-import service from '../../appwrite/config' //we use here redux
-import { Link } from 'react-router-dom'
+import React from "react";
+import service from "../../appwrite/config";
+import { Link } from "react-router-dom";
 
-const PostCard = ({$id, title, featuredImage}) => {
-  return (
-    <div className="w-fit px-2 py-1">
-        <Link to={`/posts/${$id}`}>
-            <div>
+const PostCard = ({ $id, title, featuredImage }) => {
+    return (
+        <div className="w-fit px-2 py-1">
+            <Link to={`/post/${$id}`}>
                 <div>
-                     <img src={service.getFilePreview(featuredImage)} alt={title}/>
+                    <div>
+                        <img
+                            src={service.getFilePreview(featuredImage)}
+                            alt={title}
+                        />
+                    </div>
+                    <h2>{title}</h2>
                 </div>
-                <h2>{title}</h2>
-            </div>
-        </Link>
-    </div>
-  )
-}
+            </Link>
+        </div>
+    );
+};
 
-export default PostCard
+export default PostCard;

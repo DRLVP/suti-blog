@@ -1,42 +1,48 @@
-import React, {useEffect, useState} from 'react'
-import service from '../appwrite/config'
-import { PostCard, Container } from '../components'
-
+import React, { useEffect, useState } from "react";
+import service from "../appwrite/config";
+import { PostCard, Container } from "../components";
 
 const Home = () => {
-    const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState([]);
 
-    useEffect(()=>{
-        service.getAllPost()
-        .then((posts)=>{
-            if (posts) {
-                setPosts(posts.documents)
-            }
-        })
-    },[])
+    useEffect(() => {
+        service
+            .getAllPost()
+            .then((posts) => {
+                if (posts) {
+                    setPosts(posts.documents);
+                }
+            })
+            .catch((error) => {
+                console.error("Error fetching posts:", error);
+            });
+    }, []);
 
-    if (posts.length === 0 ) {
-        return <div className='w-full h-full'>
-            <Container>
-                <h2 className="text-center text-2xl">Login to read posts</h2>
-            </Container>
-        </div>
+    if (posts.length === 0) {
+        return (
+            <div className="w-full h-full">
+                <Container>
+                    <h2 className="text-center text-2xl">
+                        Login to read posts
+                    </h2>
+                </Container>
+            </div>
+        );
     }
+
     return (
-        <div className='w-full'>
+        <div className="w-full">
             <Container>
                 <div>
-                    {
-                        posts.map((post)=>{
-                            <div key={post.$id}>
-                                <PostCard {...post}/>
-                            </div>
-                        })
-                    }
+                    {posts.map((post) => (
+                        <div key={post.$id}>
+                            <PostCard {...post} />
+                        </div>
+                    ))}
                 </div>
             </Container>
         </div>
-    )
-}
+    );
+};
 
-export default Home
+export default Home;

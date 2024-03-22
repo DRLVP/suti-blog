@@ -1,138 +1,130 @@
-import conf from "../conf/conf"
+import conf from "../conf/conf";
 import { Databases, Storage, Query, Client, ID } from "appwrite";
 
-export class Service{
+export class Service {
     client = new Client();
     databases;
     bucket;
 
-    constructor(){
+    constructor() {
         this.client
             .setEndpoint(conf.appwriteUrl)
             .setProject(conf.appwriteProjectId);
-        
-        this.databases = new Databases(this.client);
 
+        this.databases = new Databases(this.client);
         this.bucket = new Storage(this.client);
     }
 
-    // make create document method
-    async createPost({title, content, featuredImage, status, userId, slug}){
+    // Create post method
+    async createPost({ title, content, featuredImage, status, userId }) {
         try {
-            return await this.databases.createDocument(
-                conf.appwriteDatabaseId, 
-                conf.appwriteCollectionId, 
-                slug,
+            const newPost = await this.databases.createDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                ID.unique(), // Use ID.unique() to generate a unique ID
                 {
                     title,
                     content,
                     featuredImage,
                     userId,
-                    status
+                    status,
                 }
-            )
+            );
+
+            return newPost;
         } catch (error) {
             throw error;
         }
     }
 
-    // make update post method
-    async updatePost(slug,{title, content, featuredImage, status}){
+    // Update post method
+    async updatePost($id, { title, content, featuredImage, status }) {
         try {
             return await this.databases.updateDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                slug,
+                $id,
                 {
                     title,
                     content,
                     featuredImage,
-                    status
+                    status,
                 }
-            )
+            );
         } catch (error) {
             throw error;
         }
     }
 
-    // make delete post method
-    async deletePost(slug){
+    // Delete post method
+    async deletePost($id) {
         try {
             await this.databases.deleteDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                slug
-            )
+                $id
+            );
             return true;
         } catch (error) {
             throw error;
         }
-       
     }
 
-    // make get post method
-    async getPost(slug){
+    // Get post method
+    async getPost($id) {
         try {
             return await this.databases.getDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                slug
-            )
+                $id
+            );
         } catch (error) {
             throw error;
         }
     }
 
-    // make get All Post method
-    async getAllPost (){
+    // Get all posts method
+    async getAllPost() {
         try {
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                [
-                    Query.equal("status", "active")
-                ]
-            )
+                [Query.equal("status", "active")]
+            );
         } catch (error) {
             throw error;
         }
     }
 
-    // file upload service
-    async uploadFile(file){
-        try{
+    // File upload service
+    async uploadFile(file) {
+        try {
             return await this.bucket.createFile(
                 conf.appwriteBucketId,
                 ID.unique(),
-                file,
-            )
-        }catch(error){
+                file
+            );
+        } catch (error) {
             throw error;
         }
     }
 
-    // delete file method
-    async deleteFile(fileId){
+    // Delete file method
+    async deleteFile(fileId) {
         try {
-            await this.bucket.deleteFile(
-                conf.appwriteBucketId,
-                fileId
-            )
+            await this.bucket.deleteFile(conf.appwriteBucketId, fileId);
             return true;
         } catch (error) {
-            throw error
+            throw error;
         }
     }
 
-    // file preview method
-    getFilePreview(fileId){
-        this.bucket.getFilePreview(
-            conf.appwriteBucketId,
-            fileId
-        )
+    // File preview method
+    getFilePreview(fileId) {
+        return this.bucket.getFilePreview(conf.appwriteBucketId, fileId);
     }
 }
 
-const service = new Service()
+const service = new Service();
 
 export default service;
