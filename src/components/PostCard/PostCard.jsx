@@ -2,7 +2,8 @@ import React from "react";
 import service from "../../appwrite/config";
 import { Link } from "react-router-dom";
 
-const PostCard = ({post}) => {
+const PostCard = (post) => {
+    console.log("this is post in Post Card :::", post);
     return (
         <div className="w-fit px-2 py-1">
             <Link to={`/post/${post.$id}`}>
