@@ -6,16 +6,15 @@ const Home = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        service
-            .getAllPost()
-            .then((posts) => {
-                if (posts) {
-                    setPosts(posts.documents);
-                }
-            })
-            .catch((error) => {
-                console.error("Error fetching posts:", error);
-            });
+        service.getAllPost().then((allposts) => {
+            if (allposts) {
+                setPosts(allposts.documents);
+            }
+        })
+        .catch((error) => {
+            console.error("Error fetching posts:", error);
+        });
+            
     }, []);
 
     if (posts.length === 0) {

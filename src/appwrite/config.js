@@ -1,5 +1,5 @@
 import conf from "../conf/conf";
-import { Databases, Storage, Query, Client, ID } from "appwrite";
+import { Databases, Storage,Client, ID, Query } from "appwrite";
 
 export class Service {
     client = new Client();
@@ -84,15 +84,17 @@ export class Service {
     }
 
     // Get all posts method
-    async getAllPost() {
+    async getAllPost(queries = [Query.equal("status", "active")]) {
         try {
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                [Query.equal("status", "active")]
+                queries
             );
         } catch (error) {
+            console.log("Error on get all post method in Appwrite::", error);
             throw error;
+
         }
     }
 
@@ -121,7 +123,12 @@ export class Service {
 
     // File preview method
     getFilePreview(fileId) {
-        return this.bucket.getFilePreview(conf.appwriteBucketId, fileId);
+        if (fileId) {
+            return this.bucket.getFilePreview(
+                conf.appwriteBucketId, 
+                fileId
+            );
+        }
     }
 }
 

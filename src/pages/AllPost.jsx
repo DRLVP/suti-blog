@@ -7,6 +7,7 @@ const AllPost = () => {
 
     useEffect(()=>{
         service.getAllPost([]).then((posts)=> {
+            console.log("get all posts in Allpost page::", posts.documents);
             if (posts) {
                 setPosts(posts.documents)
             }

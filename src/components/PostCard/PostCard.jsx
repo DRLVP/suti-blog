@@ -2,18 +2,23 @@ import React from "react";
 import service from "../../appwrite/config";
 import { Link } from "react-router-dom";
 
-const PostCard = ({ $id, title, featuredImage }) => {
+const PostCard = ({post}) => {
     return (
         <div className="w-fit px-2 py-1">
-            <Link to={`/post/${$id}`}>
+            <Link to={`/post/${post.$id}`}>
                 <div>
                     <div>
                         <img
-                            src={service.getFilePreview(featuredImage)}
-                            alt={title}
+                            src={service.getFilePreview(post.featuredImage)}
+                            alt={post.title}
                         />
                     </div>
-                    <h2>{title}</h2>
+                    <h2>{post.title}</h2>
+                    <div>
+                        {
+                            post.content
+                        }
+                    </div>
                 </div>
             </Link>
         </div>
