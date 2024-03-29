@@ -12,7 +12,7 @@ const Post = () => {
     const navigate = useNavigate();
 
     const userData = useSelector((state) => state.auth.userData);
-
+    console.log("userData in Post page:::", userData);
     const isAuthor = post && userData ? post.userId === userData.$id : false;
 
     useEffect(() => {

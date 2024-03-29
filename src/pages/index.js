@@ -1,17 +1,17 @@
 import Home from "./Home";
-import LoginPage from "./Login";
-import SignupPage from "./Signup";
-import PostPage from "./Post";
-import AddPostPage from "./AddPost";
-import AllPostPage from "./AllPost";
-import EditPostPage from "./EditPost";
+import Login from "./Login";
+import Signup from "./Signup";
+import Post from "./Post";
+import AddPost from "./AddPost";
+import AllPost from "./AllPost";
+import EditPost from "./EditPost";
 
 export {
     Home,
-    LoginPage,
-    SignupPage,
-    PostPage,
-    AddPostPage,
-    AllPostPage,
-    EditPostPage
+    Login,
+    Signup,
+    Post,
+    AddPost,
+    AllPost,
+    EditPost
 }

@@ -37,7 +37,7 @@ export class AuthService {
     // make signin method
     async login({email, password}){
         try {
-            return await this.account.createEmailPasswordSession(email, password);
+            return await this.account.createEmailSession(email, password);
         } catch (error) {
             throw error;
         }

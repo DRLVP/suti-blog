@@ -84,7 +84,8 @@ export class Service {
     }
 
     // Get all posts method
-    async getAllPost(queries = [Query.equal("status", "active")]) {
+    async getAllPost() {
+        const queries = [Query.equal("status", ["active"])]
         try {
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
