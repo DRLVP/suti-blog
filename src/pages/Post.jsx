@@ -6,38 +6,34 @@ import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 
 const Post = () => {
-    const [$id, setId] = useState(null);
     const [post, setPost] = useState(null);
-    const params = useParams();
+    const { slug } = useParams();
     const navigate = useNavigate();
 
     const userData = useSelector((state) => state.auth.userData);
-    console.log("userData in Post page:::", userData);
-    const isAuthor = post && userData ? post.userId === userData.$id : false;
-
+    // console.log("userData in Post page:::", userData.userData.$id);
+    // console.log("post in Post page:::", post.userId);
+    const isAuthor = post && userData ? post.userId === userData.userData.$id : false;
+    
+    // console.log(isAuthor);
     useEffect(() => {
-        const { id } = params;
-        if (id) {
-            setId(id);
-            service
-                .getPost(id)
-                .then((post) => {
-                    if (post) setPost(post);
-                    else navigate("/");
-                })
-                .catch((error) => {
-                    console.error("Error fetching post:", error);
-                    navigate("/");
-                });
+        
+        if (slug) {
+            service.getPost(slug).then((post)=>{
+                if (post) {
+                    setPost(post)
+                }else{
+                    navigate("/")
+                }
+            })
         } else {
             navigate("/");
         }
-    }, [params, navigate]);
+    }, [slug, navigate]);
 
     const deletePost = () => {
-        if ($id) {
             service
-                .deletePost($id)
+                .deletePost(post.$id)
                 .then((status) => {
                     if (status) {
                         service.deleteFile(post.featuredImage);
@@ -47,7 +43,7 @@ const Post = () => {
                 .catch((error) => {
                     console.error("Error deleting post:", error);
                 });
-        }
+        
     };
 
     return post ? (
@@ -61,7 +57,7 @@ const Post = () => {
 
                     {isAuthor && (
                         <div>
-                            <Link to={`/edit-post/${$id}`}>
+                            <Link to={`/edit-post/${post.$id}`}>
                                 <Button>Edit</Button>
                             </Link>
                             <Button onClick={deletePost}>Delete</Button>
@@ -71,7 +67,7 @@ const Post = () => {
                 <div className="w-full">
                     <h1>{post.title}</h1>
                 </div>
-                <div>{parse(post.content)}</div>
+                <div>{parse(`${post.content}`)}</div>
             </Container>
         </div>
     ) : null;

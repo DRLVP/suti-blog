@@ -3,10 +3,6 @@ import service from "../../appwrite/config";
 import { Link } from "react-router-dom";
 
 const PostCard = ({$id, title, featuredImage}) => {
-   
-    console.log("PostCard $id::", $id);
-    console.log("PostCard title::", title);
-    console.log("PostCard featuredimage::", featuredImage);
     return (
         <div className="w-fit px-2 py-1 min-w-80 min-h-96 relative">
             <Link to={`/post/${$id}`}>
