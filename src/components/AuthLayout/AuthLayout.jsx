@@ -16,7 +16,16 @@ const AuthLayout = ({children, authentication = true}) => {
     setLoader(false)
   }, [authStatus, authentication, navigate])
 
-  return loader? <h1>Loading...</h1> : <div>{children}</div>
+  return loader? <div
+    className=""
+    >
+    <span
+      className=""
+      >
+        Loading...
+    </span>
+  </div> : 
+  <div>{children}</div>
 }
 
 export default AuthLayout
