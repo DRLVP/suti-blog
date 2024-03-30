@@ -5,7 +5,7 @@ import {login} from "../../store/authSlice"
 import {Input, Button, Logo} from "../index"
 import { useDispatch } from 'react-redux'
 import {useForm} from "react-hook-form"
-
+import { ArrowRight } from "react-bootstrap-icons"
 
 const Signup = () => {
   const navigate = useNavigate()
@@ -29,69 +29,92 @@ const Signup = () => {
     }
   }
   return (
-    
-    <div className="flex items-center shadow-xl gap-2">
-      <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10 text-black font-semibold`}>
-        <div className="mb-2 flex justify-center">
-          <Logo/>
-        </div>
-        
-        <p>
-          alreay have an account?
-          <Link to="/signin" className="ml-2 text-blue-600 underline">
-            sign in
-          </Link>
-        </p>
-        {
-          error && <p className="text-red-600">{error}</p>
-        }
-
-        <form onSubmit={handleSubmit(signup)}>
-          <div className='w-full'>
-            <Input
-              label = "Name: "
-              type="text"
-              placeholder = "enter your name"
-              {
-                ...register("name", {
-                  required:true
-                })
-              }
-            />
-            <Input
-              lable = "Email: "
-              type = "email"
-              placeholder = "enter your email"
-              {
-                ...register("email", {
-                  required:true,
-                  })
-              }
-              />
-              <Input
-                lable = "Password: "
-                type = "password"
-                placeholder = "enter your password"
-                {
-                  ...register("password", {
-                      required:true,
-                    })
-                }
-              />
-              <Button
-                type = "submit"
-               >Sign up</Button>
+    <div className="flex justify-center items-center">
+      <section className="rounded-md bg-slate-950 p-2 min-w-[412px]  mx-auto mt-8">
+        <div className="flex items-center justify-center bg-white px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
+          <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
+            <div className="mb-2 flex justify-center items-center">
+              <Link to="/">
+                <Logo/>
+              </Link>
+            </div>
+            <h2 className="text-center text-2xl font-bold leading-tight text-black">
+              Sign up to create account
+            </h2>
+            <p className="mt-2 text-center text-base text-gray-600">
+              Already have an account?{' '}
+              <Link
+                to="/login"
+                className="font-medium text-black transition-all duration-200 hover:underline"
+              >
+                Sign In
+              </Link>
+            </p>
+            {
+              error && <p className="text-red-600">{error}</p>
+            }
+            <form onSubmit={handleSubmit(signup)} className="mt-8">
+              <div className="space-y-5">
+                <div>
+                  <div className="mt-2">
+                    <Input
+                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                      label = "Name: "
+                      type="text"
+                      placeholder = "enter your name"
+                      {
+                        ...register("name", {
+                          required:true
+                        })
+                      }
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div className="mt-2">
+                    <Input
+                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                      label = "Email: "
+                      type = "email"
+                      placeholder = "enter your email"
+                      {
+                        ...register("email", {
+                          required:true,
+                          })
+                      }
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div className="mt-2">
+                    <Input
+                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                      label = "Password: "
+                      type = "password"
+                      placeholder = "enter your password"
+                      {
+                        ...register("password", {
+                            required:true,
+                          })
+                      }
+                    />
+                  </div>
+                </div>
+                <div>
+                  <button
+                    type="submit"
+                    className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+                  >
+                    Create Account <ArrowRight className="ml-2" size={16} />
+                  </button>
+                </div>
+              </div>
+            </form>
+            
           </div>
-        </form>
-      </div>
+        </div>
+      </section>
     </div>
-
-    
-
-
-
-    
-  
   )
 }
 

@@ -3,7 +3,7 @@ import { Signup as SignupComponent } from "../components/index"
 
 const Signup = () => {
   return (
-    <div className="w-1/2">
+    <div className="py-4">
       <SignupComponent />
     </div>
   )

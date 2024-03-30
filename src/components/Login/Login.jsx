@@ -28,7 +28,7 @@ const Login = () => {
   return (
     <div className="flex justify-center items-center">
     <section className="rounded-md bg-slate-950 p-2 max-w-[412px]  mx-auto mt-8">
-      <div className="flex items-center justify-center bg-white px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
+      <div className="flex items-center justify-center bg-white px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
         <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
           <div className="mb-2 flex justify-center items-center">
             <Link to="/">
@@ -66,12 +66,6 @@ const Login = () => {
                 </div>
               </div>
               <div>
-                <div className="flex items-center justify-between">
-                  <a href="#" title="" className="text-sm font-semibold text-black hover:underline">
-                    {' '}
-                    Forgot password?{' '}
-                  </a>
-                </div>
                 <div className="mt-2">
                   <Input
                     className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"

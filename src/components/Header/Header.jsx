@@ -37,7 +37,7 @@ const Header = () => {
     }
   ]
   return (
-    <header className="w-full h-20 shadow-xl bg-slate-950">
+    <header className="w-full h-24 shadow-xl bg-slate-950">
       <Container>
         <nav className="w-full h-full flex justify-between px-8 items-center">
           <div>
