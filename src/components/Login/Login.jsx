@@ -26,10 +26,11 @@ const Login = () => {
         }
     }
   return (
-    <section className="rounded-md bg-slate-950 p-2 w-1/3 mx-auto mt-8">
+    <div className="flex justify-center items-center">
+    <section className="rounded-md bg-slate-950 p-2 max-w-[412px]  mx-auto mt-8">
       <div className="flex items-center justify-center bg-white px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
         <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
-          <div className="mb-2 text-center">
+          <div className="mb-2 flex justify-center items-center">
             <Link to="/">
                 <Logo/>
             </Link>
@@ -99,7 +100,7 @@ const Login = () => {
         </div>
       </div>
     </section>
-
+  </div>
   )
 }
 

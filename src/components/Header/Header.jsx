@@ -42,7 +42,7 @@ const Header = () => {
         <nav className="w-full h-full flex justify-between px-8 items-center">
           <div>
             <Link to="/">
-              <Logo/>
+              <Logo width="40px"/>
             </Link>
           </div>
           <ul className="flex gap-4">
