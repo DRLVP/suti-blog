@@ -25,6 +25,9 @@ function PostForm({ post }) {
     const navigate = useNavigate();
     const userData = useSelector((state) => state.auth.userData.userData);
 
+
+    // console.log("this is post in PostForm:::", post);
+
     const submit = async (data) => {
         if (post) {
             const file =
