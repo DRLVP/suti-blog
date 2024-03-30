@@ -23,7 +23,7 @@ function PostForm({ post }) {
     });
 
     const navigate = useNavigate();
-    const userData = useSelector((state) => state.auth.userData.userData);
+    const userData = useSelector((state) => state.auth.userData);
 
 
     // console.log("this is post in PostForm:::", post);
