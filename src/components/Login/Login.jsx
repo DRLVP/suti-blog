@@ -5,7 +5,7 @@ import {Logo, Input, Button} from "../index"
 import { useDispatch } from 'react-redux'
 import authService from '../../appwrite/auth'
 import { useForm } from 'react-hook-form'
-
+import { ArrowRight } from "react-bootstrap-icons"
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch()
@@ -26,51 +26,81 @@ const Login = () => {
         }
     }
   return (
-    <div className="w-full">
-        <div className="w-full">
-            <div>
-                <Link>
-                    <Logo/>
-                </Link>
-            </div>
-            <h2 className="text-center text-3xl font-bold mt-8">Sign up to your account</h2>
-            <Link to="/signup">
-                <p>Don't have an account</p>
+    <section className="rounded-md bg-slate-950 p-2 w-1/3 mx-auto mt-8">
+      <div className="flex items-center justify-center bg-white px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
+        <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
+          <div className="mb-2 text-center">
+            <Link to="/">
+                <Logo/>
             </Link>
+          </div>
+          <h2 className="text-2xl text-center font-bold leading-tight text-black">Sign in to your account</h2>
+          <p className="mt-2text-sm text-gray-600 text-center">
+            Don&apos;t have an account?{' '}
+            <Link
+              to="/signup"
+              className="font-semibold text-black transition-all duration-200 hover:underline"
+            >
+              Create a free account
+            </Link>
+          </p>
             {
-                error && <p>{error}</p>
+                error && <p className="text-red-600">{error}</p>
             }
-
-            <form onSubmit={handleSubmit(login)}>
-                <div>
-                    <Input
-                    lable = "Email: "
-                    type = "email"
+          <form onSubmit={handleSubmit(login)} className="mt-8">
+            <div className="space-y-5">
+              <div>
+                <div className="mt-2">
+                  <Input
+                    className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                    type="email"
+                    label="Email"
                     placeholder = "enter your email"
                     {
                         ...register("email", {
                             required:true,
                         })
                     }
-                    />
-                    <Input
-                    lable = "Password: "
-                    type = "password"
-                    placeholder = "enter your password"
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="flex items-center justify-between">
+                  <a href="#" title="" className="text-sm font-semibold text-black hover:underline">
+                    {' '}
+                    Forgot password?{' '}
+                  </a>
+                </div>
+                <div className="mt-2">
+                  <Input
+                    className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                    type="password"
+                    placeholder="enter your password"
+                    label="Password"
                     {
                         ...register("password", {
                             required:true,
                         })
                     }
-                    />
-                    <Button
-                    type = "submit"
-                    >Sign in</Button>
+                  />
                 </div>
-            </form>
+              </div>
+              <div>
+                <button
+                  type="submit"
+                  className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+                >
+                  Sign In <ArrowRight className="ml-2" size={16} />
+                </button>
+              </div>
+            </div>
+          </form>
+          
         </div>
-    </div>
+      </div>
+    </section>
+
   )
 }
 
-export default Login
+export default Login;
