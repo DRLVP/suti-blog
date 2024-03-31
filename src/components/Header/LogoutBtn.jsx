@@ -13,7 +13,7 @@ const LogoutBtn = () => {
             dispatch(logout())
         })
     }
-  return <button onClick={logoutHandler} className="flex justify-center items-center text-sm gap-1 bg-white text-black font-bold px-4 py-2 rounded-sm transition-colors hover:bg-red-500">
+  return <button onClick={logoutHandler} className="flex justify-center items-center text-sm gap-1 bg-[#1636C6] text-[#DADADA] font-bold px-4 py-2 rounded-sm transition-all hover:bg-[#011A25]">
     logout
     <BoxArrowInRight className="text-lg font-semibold"/>
   </button>

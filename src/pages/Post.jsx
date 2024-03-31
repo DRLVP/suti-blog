@@ -11,8 +11,8 @@ const Post = () => {
     const navigate = useNavigate();
 
     const userData = useSelector((state) => state.auth.userData);
-    // console.log("userData in Post page:::", userData.userData.$id);
-    // console.log("post in Post page:::", post.userId);
+    // console.log("userData in Post page:::", userData.$id);
+    // console.log("post in Post page:::", post.content.textContent);
     const isAuthor = post && userData ? post.userId === userData.userData.$id : false;
     
     // console.log(isAuthor);

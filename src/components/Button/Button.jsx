@@ -9,7 +9,7 @@ const Button = ({
   return (
     <button 
     type={`${type}`} 
-    className={`px-4 py-2 bg-purple-900 text-white rounded-md ${className}`} 
+    className={`px-4 py-2 bg-[#1636C6] text-[#DADADA] rounded-sm ${className}`} 
     {...props}
     >
       {children}
