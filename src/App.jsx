@@ -26,7 +26,7 @@ function App() {
   <div className="w-full text-white">
     <div>
       <Header/>
-        <main className=" bg-blue-950 h-screen">
+        <main className="bg-[#011A25] min-h-screen">
           <Outlet/>
         </main>
       <Footer/>

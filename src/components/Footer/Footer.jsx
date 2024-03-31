@@ -1,67 +1,89 @@
 import React from 'react'
-import {Logo, PostCard} from "../index";
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import {Logo} from "../index";
+import { Link } from 'react-router-dom';
+import { TwitterX, Instagram, Linkedin } from "react-bootstrap-icons"
 
 const Footer = () => {
-  const authStatus = useSelector((state) => state.status);
-  const navigate = useNavigate()
-
-  const navItems = [
-    {
-      name:"Home",
-      url:"/",
-      active: true
-    },
-    {
-      name:"login",
-      url:"/login",
-      active:!authStatus
-    },
-    {
-      name: "signup",
-      url:"/signup",
-      active:!authStatus
-    },
-    {
-      name:"all posts",
-      url: "/all-posts",
-      active:authStatus
-    },
-    {
-      name:"add post",
-      url : "/add-post",
-      active:authStatus
-    }
-  ]
+ 
   return (
-
-    <footer className="w-full bg-slate-950 shadow-xl py-8">
-      <div className="flex justify-between px-8">
-          <div>
-            <h3 className="text-2xl underline">Impotant Links</h3>
-            <ul className="flex flex-col gap-2 mt-4">
-            {
-              navItems.map(item => 
-                item.active?
-                  <div key={item.name}>
-                    <li className="text-xl">
-                      <button onClick={()=> navigate(item.url)}>{item.name}</button>
-                    </li>
-                  </div>
-                :null)
-              }
+    <footer className="relative overflow-hidden bg-[#050404] py-8">
+      <div className="container relative z-10 mx-auto px-4">
+        <div className="-m-8 flex flex-wrap items-center justify-between">
+          <div className="w-auto p-8">
+            <a href="#">
+              <div className="inline-flex items-center">
+                <Link>
+                  <Logo/>
+                </Link>
+              </div>
+            </a>
+          </div>
+          <div className="w-auto p-8">
+            <ul className="-m-5 flex flex-wrap items-center">
+              <li className="p-5">
+                <Link 
+                to="/privacy-policy"
+                className="font-medium text-[#DADADA] hover:text-[#951ABE] transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li className="p-5">
+                <Link 
+                to="/terms-condition"
+                className="font-medium text-[#DADADA] hover:text-[#951ABE] transition-colors">
+                  Terms of Service
+                </Link>
+              </li>
+              <li className="p-5">
+                <Link
+                to="/about-us"
+                className="font-medium text-[#DADADA] hover:text-[#951ABE] transition-colors">
+                  About Us
+                </Link>
+              </li>
+              <li className="p-5">
+                <Link
+                to="/contact-us"
+                className="font-medium text-[#DADADA] hover:text-[#951ABE] transition-colors">
+                  Contact Us
+                </Link>
+              </li>
             </ul>
           </div>
-          <div>
-              <Logo/>
+          <div className="w-auto p-8">
+            <div className="-m-1.5 flex flex-wrap">
+              <div className="w-auto p-1.5">
+                <Link to="/">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full border border-[#DADADA] hover:border-[#951ABE] transition-all translate-y-1">
+                    <Linkedin/>
+                  </div>
+                </Link>
+              </div>
+              <div className="w-auto p-1.5">
+                <Link to="/">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full border border-[#DADADA] hover:border-[#951ABE] transition-all translate-y-1">
+                    <TwitterX/>
+                  </div>
+                </Link>
+              </div>
+              <div className="w-auto p-1.5">
+                <Link to="/">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full border border-[#DADADA] hover:border-[#951ABE] transition-all translate-y-1">
+                    <Instagram/>
+                  </div>
+                </Link>
+              </div>
+            </div>
           </div>
-          <div>
-           
-          </div>
+        </div>
+      </div>
+      <div>
+      <div className="mt-4 md:mt-0">
+          <p className="text-sm font-medium text-[#DADADA] text-center">© 2025 sutiblog. All rights reserved.</p>
+        </div>
       </div>
     </footer>
   )
 }
 
-export default Footer
+export default Footer;

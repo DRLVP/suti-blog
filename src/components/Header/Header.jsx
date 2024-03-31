@@ -37,7 +37,7 @@ const Header = () => {
     }
   ]
   return (
-    <header className="w-full h-24 shadow-xl bg-slate-950">
+    <header className="w-screen h-24 shadow-xl bg-[#050404]">
       <Container>
         <nav className="w-full h-full flex justify-between px-8 items-center">
           <div>
@@ -50,7 +50,7 @@ const Header = () => {
               navItems.map(item => 
                 item.active?
                   <div key={item.name}>
-                    <li className="text-2xl">
+                    <li className="text-[1.3rem] text-[#DADADA] hover:text-[#951ABE] transition-colors">
                       <button onClick={()=> navigate(item.url)}>{item.name}</button>
                     </li>
                   </div>

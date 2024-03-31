@@ -30,22 +30,22 @@ const Signup = () => {
   }
   return (
     <div className="flex justify-center items-center">
-      <section className="rounded-md bg-slate-950 p-2 min-w-[412px]  mx-auto mt-8">
-        <div className="flex items-center justify-center bg-white px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
+      <section className="rounded-md bg-[#050404] p-2 min-w-[412px]  mx-auto mt-8">
+        <div className="flex items-center justify-center bg-[#DADADA] px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
           <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
             <div className="mb-2 flex justify-center items-center">
               <Link to="/">
                 <Logo/>
               </Link>
             </div>
-            <h2 className="text-center text-2xl font-bold leading-tight text-black">
+            <h2 className="text-center text-2xl font-bold leading-tight text-[#011A25]">
               Sign up to create account
             </h2>
             <p className="mt-2 text-center text-base text-gray-600">
               Already have an account?{' '}
               <Link
                 to="/login"
-                className="font-medium text-black transition-all duration-200 hover:underline"
+                className="font-medium text-[#011A25] transition-all duration-200 hover:underline"
               >
                 Sign In
               </Link>
@@ -58,7 +58,7 @@ const Signup = () => {
                 <div>
                   <div className="mt-2">
                     <Input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="flex h-10 w-full rounded-md border border-[#050404] bg-transparent text-[#011A25] px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       label = "Name: "
                       type="text"
                       placeholder = "enter your name"
@@ -73,7 +73,7 @@ const Signup = () => {
                 <div>
                   <div className="mt-2">
                     <Input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="flex h-10 w-full rounded-md border border-[#050404] bg-transparent text-[#011A25] px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       label = "Email: "
                       type = "email"
                       placeholder = "enter your email"
@@ -88,7 +88,7 @@ const Signup = () => {
                 <div>
                   <div className="mt-2">
                     <Input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="flex h-10 w-full rounded-md border border-[#050404] bg-transparent text-[#011A25] px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       label = "Password: "
                       type = "password"
                       placeholder = "enter your password"
@@ -103,7 +103,7 @@ const Signup = () => {
                 <div>
                   <button
                     type="submit"
-                    className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+                    className="inline-flex w-full items-center justify-center rounded-md bg-[#1636C6] text-[#DADADA] px-3.5 py-2.5 font-semibold leading-7 hover:bg-[#011A25]"
                   >
                     Create Account <ArrowRight className="ml-2" size={16} />
                   </button>
