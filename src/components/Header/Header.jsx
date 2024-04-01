@@ -12,12 +12,12 @@ const Header = () => {
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
+  const handleClickLink = ()=>{
+    setIsMenuOpen(false)
   }
   const navItems = [
     {
-      name:"Home",
+      name:"home",
       url:"/",
       active: true
     },
@@ -93,7 +93,8 @@ const Header = () => {
                     <li key={item.name} className='mb-4'>
                       <Link
                         to={item.url}
-                        className="font-semibold text-lg text-[#011A25]"
+                        className="font-semibold text-lg text-[#011A25] hover:text-[#951ABE] transition-all"
+                        onClick={handleClickLink}
                       >
                         {item.name}
                       </Link>
