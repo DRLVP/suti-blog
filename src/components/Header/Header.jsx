@@ -74,7 +74,7 @@ const Header = () => {
           </div>
           {isMenuOpen && (
             <div>
-              <nav className="fixed top-0 right-0  bottom-0 lg:bottom-auto bg-[#DADADA] w-1/2 z-50">
+              <nav className="fixed top-0 right-0  bottom-0 lg:bottom-auto bg-[#DADADA] min-w-80 z-50">
                 <div
                   className="hidden max-lg:block fixed right-[-0px]  px-8 py-4 cursor-pointer"
                   onClick={() => {
