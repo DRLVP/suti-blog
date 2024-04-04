@@ -30,9 +30,9 @@ const Home = () => {
     }
 
     return (
-        <div className="w-full">
+        <div className="w-full relative py-8">
             <Container>
-                <div>
+                <div className="w-full flex flex-wrap justify-center  gap-4">
                     {posts.map((post) => (
                         <div key={post.$id}>
                             <PostCard {...post} />

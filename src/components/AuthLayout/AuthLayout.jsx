@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { Loader } from "../index"
 
 const AuthLayout = ({children, authentication = true}) => {
   const navigate = useNavigate()
@@ -16,16 +17,10 @@ const AuthLayout = ({children, authentication = true}) => {
     setLoader(false)
   }, [authStatus, authentication, navigate])
 
-  return loader? <div
-    className=""
-    >
-    <span
-      className=""
-      >
-        Loading...
-    </span>
+  return loader? <div>
+    <Loader/>
   </div> : 
-  <div>{children}</div>
+    <div>{children}</div>
 }
 
-export default AuthLayout
+export default AuthLayout;
