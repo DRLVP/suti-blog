@@ -12,9 +12,6 @@ const Header = () => {
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
   const navItems = [
     {
       name:"Home",
@@ -43,37 +40,36 @@ const Header = () => {
     }
   ]
   return (
-    <header className="w-full bg-[#050404]">
+    <header className="navbar bg-base-100">
       <Container>
         <nav className="w-full flex justify-between items-center">
-          <div>
-            <Link>
+          <div className="navbar-start">
+            <Link to="/">
               <Logo/>
             </Link>
           </div>
-          <ul className="flex-1 flex justify-end items-center gap-8 max-lg:hidden">
+          <ul className="navbar-end flex-1 flex justify-end items-center gap-8 max-lg:hidden">
             {
               navItems.map((item)=>(
                 item.active?
-                <li key={item.name} className="text-lg font-semibold text-[#DADADA] hover:text-[#951ABE] transition-all active:text-[#951ABE]">
-                  <Link to={item.url}>
+                <li key={item.name} className="text-lg font-semibold text-[#DADADA]  transition-all list-none">
+                  <Link to={item.url} className="btn btn-ghost text-xl">
                     {item.name}
                   </Link>
                 </li>:null
               ))
             }
             <div>
-              {
-                authStatus && <LogoutBtn/>
-              }
+                {
+                  authStatus && <LogoutBtn/>
+                }
             </div>
           </ul>
           <div
             className="hidden max-lg:block cursor-pointer"
             onClick={() => {
               setIsMenuOpen(!isMenuOpen)
-            }}
-          >
+            }}>
             <MenuButton className='text-[#DADADA] text-2xl font-semibold'/>
           </div>
           {isMenuOpen && (
@@ -94,17 +90,18 @@ const Header = () => {
                       <Link
                         to={item.url}
                         className="font-semibold text-lg text-[#011A25]"
+                        onClick={()=> setIsMenuOpen(false)}
                       >
                         {item.name}
                       </Link>
                     </li>:null
                   ))}
 
-                <div>
-                  {
-                    authStatus && <LogoutBtn/>
-                  }
-                </div>
+                  <div>
+                    {
+                      authStatus && <LogoutBtn/>
+                    }
+                  </div>
                 </ul>
               </nav>
             </div>
@@ -112,7 +109,6 @@ const Header = () => {
         </nav>
       </Container>
     </header>
-   
   )
 }
 

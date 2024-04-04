@@ -12,7 +12,7 @@ import PostCard from "./PostCard/PostCard";
 import RTE from "./RTE/RTE";
 import Signup from "./Signup/Signup";
 import Login from "./Login/Login"
-
+import Loader from "./Loader/Loader";
 export {
     Header,
     Footer,
@@ -27,5 +27,6 @@ export {
     PostCard,
     RTE,
     Signup,
+    Loader,
     Login
 }

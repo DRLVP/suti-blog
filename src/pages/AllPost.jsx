@@ -17,7 +17,7 @@ const AllPost = () => {
   return (
     <div className="w-full py-4">
         <Container>
-            <div className='flex flex-wrap'>
+            <div className='flex flex-wrap justify-center gap-4'>
                 {
                     posts.map((post)=>(
                         <div key={post.$id}>

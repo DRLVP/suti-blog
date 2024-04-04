@@ -8,7 +8,7 @@ const PostCard = ({$id, title, featuredImage, content}) => {
     return (
         <div className="w-fit px-2 py-1 min-w-80 min-h-96 relative">
             <Link to={`/post/${$id}`}>
-                <div className="w-[300px] rounded-md border">
+                <div className="w-[300px] rounded-md border hover:border-[#951ABE] transition-all">
                 <img
                     src={service.getFilePreview(featuredImage)}
                     className="h-[200px] w-full rounded-t-md object-cover"
@@ -18,7 +18,7 @@ const PostCard = ({$id, title, featuredImage, content}) => {
                     <h1 className="inline-flex items-center text-lg font-semibold">
                     {title} &nbsp; <ArrowUpRight className="h-4 w-4" />
                     </h1>
-                    <p className="mt-3 text-sm text-gray-600">
+                    <p className="mt-3 text-sm text-gray-600 text-ellipsis overflow-hidden truncate">
                         {parse(`${content}`)}
                     </p>
                     
