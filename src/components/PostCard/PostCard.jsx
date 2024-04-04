@@ -6,23 +6,16 @@ import parse from "html-react-parser"
 
 const PostCard = ({$id, title, featuredImage, content}) => {
     return (
-        <div className="w-fit px-2 py-1 min-w-80 min-h-96 relative">
+        <div className="card w-80 bg-base-100 shadow-xl">
             <Link to={`/post/${$id}`}>
-                <div className="w-[300px] rounded-md border hover:border-[#951ABE] transition-all">
-                <img
-                    src={service.getFilePreview(featuredImage)}
-                    className="h-[200px] w-full rounded-t-md object-cover"
-                    alt={title}
-                />
-                <div className="p-4">
-                    <h1 className="inline-flex items-center text-lg font-semibold">
-                    {title} &nbsp; <ArrowUpRight className="h-4 w-4" />
-                    </h1>
-                    <p className="mt-3 text-sm text-gray-600 text-ellipsis overflow-hidden truncate">
-                        {parse(`${content}`)}
-                    </p>
-                    
-                </div>
+                <figure>
+                    <img src={service.getFilePreview(featuredImage)} alt={title} className="rounded-t-md object-cover"/>
+                </figure>
+                <div className="card-body">
+                    <h2 className="card-title">
+                        {title} <ArrowUpRight className="h-4 w-4" />
+                    </h2>
+                    <p className="text-ellipsis overflow-hidden line-clamp-3">{parse(`${content}...`)}</p>
                 </div>
             </Link>
         </div>
