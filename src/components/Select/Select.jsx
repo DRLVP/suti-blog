@@ -9,15 +9,15 @@ const Select = ({
     const id = useId()
   return (
     <div>
-        <label htmlFor={id}>{label}</label>
+        <label htmlFor={id} className='text-[#dadada] font-semibold'>{label}</label>
         <select 
         id={id} 
-        className={`${className}`} 
+        className={`${className} select select-success w-full max-w-xs`} 
         ref={ref} 
         {...props}>
             {
                 options?.map((item) => (
-                    <option value={item} key={item} className='text-black'>
+                    <option value={item} key={item} className='text-[#dadada] text-xl'>
                         {item}
                     </option>
                 ))
