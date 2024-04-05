@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import service from "../appwrite/config";
-import { PostCard, Container } from "../components";
+import { PostCard, Container, Loader } from "../components";
 
 const Home = () => {
     const [posts, setPosts] = useState([]);
@@ -21,8 +21,9 @@ const Home = () => {
         return (
             <div className="w-full h-full">
                 <Container>
-                    <h2 className="text-center text-2xl">
-                        Login to read posts
+                    <Loader/>
+                    <h2 className="text-center text-2xl m-auto">
+                        login to read the posts
                     </h2>
                 </Container>
             </div>

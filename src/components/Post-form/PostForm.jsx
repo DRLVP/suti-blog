@@ -88,20 +88,22 @@ function PostForm({ post }) {
     }, [watch, slugTransform, setValue]);
 
     return (
-        <div>
-            <form onSubmit={handleSubmit(submit)}>
-                <div className="w-2/3">
-                    <Input
-                        label="title"
+        <div className="w-full py-8">
+            <form onSubmit={handleSubmit(submit)} className="flex justify-start flex-wrap md:gap-0 gap-8">
+                <div className="w-2/3  p-2 flex flex-col gap-4 max-[768px]:w-full ">
+                    <label htmlFor="title" className="text-[#dadada] font-semibold">Title :</label>
+                    <input
+                        id="title"
                         placeholder="enter the title"
-                        className="w-full"
+                        className="w-full input input-bordered"
                         {...register("title", { required: true })}
                     />
 
-                    <Input
-                        label="slug"
+                    <label htmlFor="title" className="text-[#dadada] font-semibold">Slug :</label>
+                    <input
                         placeholder="slug"
-                        className="w-full"
+                        className="w-full input input-bordered"
+                        readOnly
                         {...register("slug", { required: true })}
                         onInput={(e) => {
                             setValue(
@@ -119,11 +121,14 @@ function PostForm({ post }) {
                         defaultValue={getValues("content")}
                     />
                 </div>
-                <div className="w-1/3">
-                    <Input
-                        label="featured image"
+
+                <div className="w-1/3 flex flex-col gap-4 max-[768px]:w-full">
+                    <label htmlFor="file">Featured image:</label>
+                    <input
                         type="file"
                         accept="image/jpg, image/png, image/jpeg, image/gif"
+                        id="file"
+                        className="input input-bordered w-full"
                         {...register("image", { required: !post })}
                     />
 
@@ -135,10 +140,9 @@ function PostForm({ post }) {
                             />
                         </div>
                     )}
-
+                    <label>Status:</label>
                     <Select
                         options={["active", "inactive"]}
-                        label="status"
                         {...register("status", { required: true })}
                     />
 

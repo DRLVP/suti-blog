@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import service from '../appwrite/config'
-import { PostCard, Container } from '../components'
+import { PostCard, Container, Loader } from '../components'
 
 const AllPost = () => {
     const [posts, setPosts] = useState([])
@@ -12,7 +12,15 @@ const AllPost = () => {
             }
         })
     
-
+    if (posts.length === 0) {
+        return (
+            <div className="w-full flex justify-center items-center">
+                <Container>
+                    <Loader/>
+                </Container>
+            </div>
+        );
+    }
    
   return (
     <div className="w-full py-4">
