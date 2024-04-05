@@ -47,27 +47,31 @@ const Post = () => {
     };
 
     return post ? (
-        <div className="w-full">
+        <div className="w-full py-8">
             <Container className="my-5">
-                <div>
-                    <img
-                        src={service.getFilePreview(post.featuredImage)}
-                        alt={post.title}
-                    />
-
+                <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
                     {isAuthor && (
-                        <div>
+                        <div className="absolute right-6 top-6">
                             <Link to={`/edit-post/${post.$id}`}>
                                 <Button>Edit</Button>
                             </Link>
-                            <Button onClick={deletePost}>Delete</Button>
+                            <Button onClick={deletePost} className="ml-2">Delete</Button>
                         </div>
                     )}
+                    <img
+                        src={service.getFilePreview(post.featuredImage)}
+                        alt={post.title}
+                        className="rounded-xl h-96 object-cover"
+                    />
+
+                    
                 </div>
-                <div className="w-full">
-                    <h1>{post.title}</h1>
+                <div className="w-full mb-6">
+                    <h1 className="text-2xl font-bold">{post.title}</h1>
                 </div>
-                <div>{parse(`${post.content}`)}</div>
+                <div className="browser-css">
+                    {parse(`${post.content}`)}
+                </div>
             </Container>
         </div>
     ) : null;
