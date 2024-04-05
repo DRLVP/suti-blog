@@ -31,9 +31,11 @@ function App() {
         </main>
       <Footer/>
     </div>
-  </div> : <h1>Loading...</h1>;
+  </div> : <section className="w-screen h-screen flex justify-center items-center">
+    <progress className="progress w-56"></progress>
+  </section>;
     
   
 }
 
-export default App
+export default App;
