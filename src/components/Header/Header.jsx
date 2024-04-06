@@ -12,9 +12,6 @@ const Header = () => {
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
   const navItems = [
     {
       name:"home",
@@ -93,6 +90,7 @@ const Header = () => {
                       <Link
                         to={item.url}
                         className="font-semibold text-lg text-[#011A25]"
+                        onClick={()=>setIsMenuOpen(false)}
                       >
                         {item.name}
                       </Link>
