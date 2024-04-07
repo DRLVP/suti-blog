@@ -46,11 +46,14 @@ const Login = () => {
                 Create a free account
               </Link>
             </p>
+            <span>
               {
-                  error && <p className="text-red-600 w-full px-4">{error}</p>
+                  error && <p className="text-red-600">{error}</p>
               }
+            </span>
             <form onSubmit={handleSubmit(login)} className="mt-8">
               <div className="space-y-5">
+              
                 <div>
                   <div className="mt-2">
                     <Input
