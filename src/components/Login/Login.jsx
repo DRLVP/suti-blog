@@ -47,7 +47,7 @@ const Login = () => {
               </Link>
             </p>
               {
-                  error && <p className="text-red-600">{error}</p>
+                  error && <p className="text-red-600 w-full px-4">{error}</p>
               }
             <form onSubmit={handleSubmit(login)} className="mt-8">
               <div className="space-y-5">
@@ -57,6 +57,7 @@ const Login = () => {
                       type="email"
                       label="Email:"
                       placeholder = "enter your email"
+                      value="test@example.com"
                       {
                           ...register("email", {
                               required:true,
@@ -71,6 +72,7 @@ const Login = () => {
                       type="password"
                       placeholder="enter your password"
                       label="Password:"
+                      value="123456789"
                       {
                           ...register("password", {
                               required:true,

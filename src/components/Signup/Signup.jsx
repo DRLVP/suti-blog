@@ -50,7 +50,7 @@ const Signup = () => {
               </Link>
             </p>
             {
-              error && <p className="text-red-600">{error}</p>
+              error && <p className="text-red-600 w-full px-4">{error}</p>
             }
             <form onSubmit={handleSubmit(signup)} className="mt-8">
               <div className="space-y-5">
