@@ -21,7 +21,6 @@ const Home = () => {
         return (
             <div className="w-full h-full">
                 <Container>
-                    <Loader/>
                     <h2 className="text-center text-2xl m-auto">
                         login to read the posts
                     </h2>
